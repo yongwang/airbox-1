@@ -1,21 +1,27 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Table from 'react-bootstrap/table';
 import {Toast, ToastHeader, ToastBody} from 'react-bootstrap';
 import axios from 'axios';
 
 import PriorityChanger from './PriorityChanger';
 
+import TaskIdContext from '../context/taskIdContext';
+
 function TaskDetail() {
-  const [task, setTask] = React.useState([]);
-  const [saveFlag, setSaveFlag] = React.useState(false);
-  const [showSaveSuccess, setShowSaveSucces] = React.useState(false);
+  const {taskId, setTaskId} = useContext(TaskIdContext);
+  console.log('detail', taskId)
+  const [task, setTask] = useState(taskId);
+  const [saveFlag, setSaveFlag] = useState(false);
+  const [showSaveSuccess, setShowSaveSucces] = useState(false);
 
   useEffect(() => {
-    axios.get('/taskmanager/v1/tasks/1.json')
-      .then(res => {
-        setTask(res.data.task);
-      })
-  }, []);
+    if (taskId !== 0) {
+      axios.get('/taskmanager/v1/tasks/' + taskId+ '.json')
+        .then(res => {
+          setTask(res.data.task);
+        })
+    }
+  }, [taskId])
 
   const createDate = timestamp => {
     return new Date(timestamp).toLocaleString();
@@ -23,7 +29,7 @@ function TaskDetail() {
 
   function saveTask() {
     if (saveFlag) {
-      //axios.put('/taskmanager/v1/task/' + task.AbxTaskId, JSON.stringify(task))
+      //axios.put('/taskmanagrr/v1/task/' + task.AbxTaskId, JSON.stringify(task))
       //.then(() => {
         setShowSaveSucces(true);
       //});
@@ -44,6 +50,7 @@ function TaskDetail() {
 
   return (
     <div>
+    {taskId !== 0 && 
     <Table striped bordered variant="dark" size="sm">
       <thead>
         <tr>
@@ -72,6 +79,7 @@ function TaskDetail() {
         </tr>
       </tbody>
     </Table>
+  }
     <Toast show={showSaveSuccess} onClose={() => setShowSaveSucces(false)} delay={30000}>
       <Toast.Header>
         Changes Saved Successfully

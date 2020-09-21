@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Table from 'react-bootstrap/table';
 import axios from 'axios';
+import TaskIdContext from '../context/taskIdContext';
 
 function TaskTable() {
+  const {taskId, setTaskId} = useContext(TaskIdContext)
+
   const [taskList, setTaskList] = React.useState([]);
   const [showAllOrgs, setShowAllOrgs] = React.useState('false')
   useEffect(() => {
@@ -21,6 +24,10 @@ function TaskTable() {
           })
       }
     }
+    const setNewTaskId = (task) => {
+      setTaskId(task)
+      console.log(task);
+    }
 
     const showAllOrganisations = () => {
       axios.get('/taskmanager/v1/tasks.json')
@@ -29,11 +36,9 @@ function TaskTable() {
           setShowAllOrgs(false)
         });
     }
-    const showTaskDetail = (taskId) => {
-      console.log('showTaskDetail', taskId);
-    }
 
   return(
+    <div>
     <Table striped bordered hover variant="dark" size="sm">
       <thead>
         <tr>
@@ -54,7 +59,7 @@ function TaskTable() {
         {taskList.map(task =>
           <tr key={task.AbxTaskId}>
             <td>
-              <a href="#" onClick={(e) => showTaskDetail(task.AbxTaskId)}>
+              <a href="#" onClick={(e) => setNewTaskId(task.AbxTaskId)}>
                 {task.taskSummary}
               </a>
             </td>
@@ -67,6 +72,7 @@ function TaskTable() {
         )}
       </tbody>
     </Table>
+  </div>
   )
   
 }

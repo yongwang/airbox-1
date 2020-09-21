@@ -1,13 +1,5 @@
-import React, {useState, createContext} from 'react'
+import React, {createContext} from 'react'
 
-export const TaskIdContext = createContext();
+export const TaskIdContext = createContext(0)
 
-export const TaskIdContextProvider = props => {
-  const [taskId, setTaskId] = useState('');
-
-  return (
-    <TaskIdContext.Provider value={[taskId, setTaskId]}>
-      {props.children}
-    </TaskIdContext.Provider>
-  )
-}
+export default TaskIdContext;

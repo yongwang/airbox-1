@@ -1,0 +1,16 @@
+{
+  "task": {
+    "AbxTaskId": 2,
+    "OrganisationTaskId": 2,
+    "OrganisationId": 1,
+    "priority": "LOW",
+    "TaskStatus": "Working on it",
+    "AssignedTo": "Foo-1",
+    "timestamp": "2019-05-28T13:06:29.854+0000",
+    "latitude": 51.238333,
+    "longitude": -1.310694,
+    "taskSummary": "Check if Queen Right",
+    "taskDescription": "Ideally find the queen but if eggs and or larvae are present that should be ok",
+    "callerId": 2
+  }
+}
