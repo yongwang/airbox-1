@@ -1,0 +1,16 @@
+{
+  "task": {
+    "AbxTaskId": 1,
+    "OrganisationTaskId": 1,
+    "OrganisationId": 1,
+    "priority": "LOW",
+    "TaskStatus": "Working on it",
+    "AssignedTo": "Foo-1",
+    "timestamp": "2019-05-28T13:06:29.854+0000",
+    "latitude": 51.238333,
+    "longitude": -1.310694,
+    "taskSummary": "Check beehive for varroa",
+    "taskDescription": "Check hive base board and also all frames in the brood box, record drop numbers for base board",
+    "callerId": 1
+  }
+}

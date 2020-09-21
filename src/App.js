@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Container, Row, Col} from 'react-bootstrap';
+import TaskTable from './components/TasksTable';
+import TaskDetail from './components/TaskDetail';
+
 
 function App() {
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Tasks</h1>
+      <Container>
+        <Row>
+          <Col>
+            <TaskTable/>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <TaskDetail/>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

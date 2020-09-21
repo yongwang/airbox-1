@@ -1,0 +1,38 @@
+import React, {useState} from 'react';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+function PriorityChanger(props) {
+  console.log(props);
+  const [type, setType] = useState('info');
+  const [priority, setPriority] = useState(props.priority);
+
+  const processType = (type) => {
+    if (type === 'HIGH') {
+      return 'danger';
+    } else if (type === 'MEDIUM') {
+      return 'warning'
+    } else {
+      return 'info'
+    }
+  }
+
+  //setType(processType(props.priority));
+  const handlePriorityChange = (eventKey, ev) => {
+    setPriority(eventKey);
+    setType(processType(eventKey));
+    console.log('priority', priority);
+    //console.log('type', type);
+  }
+
+  return (
+    <DropdownButton id="priortiy" title={priority} variant="danger">
+      <Dropdown.Item onSelect={handlePriorityChange} eventKey="HIGH">High</Dropdown.Item>
+      <Dropdown.Item onSelect={handlePriorityChange} eventKey="MEDIUM">Medium</Dropdown.Item>
+      <Dropdown.Item onSelect={handlePriorityChange} eventKey="LOW">Low</Dropdown.Item>
+    </DropdownButton>
+  )
+
+}
+
+export default PriorityChanger;
