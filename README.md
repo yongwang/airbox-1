@@ -33,7 +33,7 @@ Its a really interesting technical test, unlike a lot of the "make a todo list a
 
 # Running the demo
 
-Either clone this repository and use the following commands to build and serve the demo or visit [http://airboxdemo.s3-website.eu-west-2.amazonaws.com/](The site on AWS)
+Either clone this repository and use the following commands to build and serve the demo in debugging mode or visit [The AWS hosted version of the site](http://airboxdemo.s3-website.eu-west-2.amazonaws.com/) to see the build and minified version.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
